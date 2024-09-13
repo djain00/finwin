@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Literacy Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Financial Literacy Quiz</h2>
+        <div id="question-container">
+            <p>What is compound interest?</p>
+            <div>
+                <input type="radio" name="question" value="0"> Interest on a loan<br>
+                <input type="radio" name="question" value="10"> Interest on interest<br>
+                <input type="radio" name="question" value="0"> A savings strategy<br>
+                <input type="radio" name="question" value="0"> Interest rate cap<br>
+            </div>
+        </div>
+        <button onclick="submitAnswer()">Submit Answer</button>
+        <p id="score">Score: 0</p>
+    </div>
+
+    <script>
+        let score = 0;
+
+        function submitAnswer() {
+            const selected = document.querySelector('input[name="question"]:checked');
+            if (selected) {
+                score += parseInt(selected.value);
+                document.getElementById('score').innerText = "Score: " + score;
+                alert('Answer submitted! Score updated.');
+                window.location.href = 'rewards.html?score=' + score; // Redirect to rewards
+            } else {
+                alert('Please select an answer!');
+            }
+        }
+    </script>
+</body>
+</html>
